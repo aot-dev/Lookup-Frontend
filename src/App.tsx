@@ -5,13 +5,14 @@ import LookupForm from './components/LookupForm';
 import LookupResult from './components/LookupResult';
 
 const App = () => {
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async (query: string) => {
     setLoading(true);
     setError(null);
+    setResult('');
 
     try {
       const response = await axios.post(`http://localhost:3000/api/lookup`,{

@@ -1,11 +1,11 @@
 interface LookupResultProps {
-    data: any;
+    data: string;
   }
   
   const LookupResult = ({ data }: LookupResultProps) => {
     return (
       <div className="result-container">
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <pre>{data}</pre>
       </div>
     );
   };
