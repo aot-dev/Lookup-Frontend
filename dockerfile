@@ -1,11 +1,15 @@
-FROM node:18 AS build
+# Use Node.js for building
+FROM node:18 AS builder
 WORKDIR /app
 
-COPY . .
-
+# Install dependencies and build the app
+COPY package.json package-lock.json ./
 RUN npm install
+COPY . .
 RUN npm run build
 
-# Serve the build folder
+# Use Nginx for serving the built app
 FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
