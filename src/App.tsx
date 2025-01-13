@@ -4,6 +4,7 @@ import './App.css';
 import LookupForm from './components/LookupForm';
 import LookupResult from './components/LookupResult';
 
+const apiUrl = import.meta.env.API_URL;
 const App = () => {
   const [result, setResult] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -15,7 +16,7 @@ const App = () => {
     setResult('');
 
     try {
-      const response = await axios.post(`http://13.61.186.57:8080/api/lookup`,{
+      const response = await axios.post(`${apiUrl}lookup`,{
         query
       });
       setResult(response.data);
