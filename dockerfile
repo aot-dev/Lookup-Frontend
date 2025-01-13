@@ -8,8 +8,9 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Use Nginx for serving the built app
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm install -g serve
+
+EXPOSE 3000
+
+# Step 9: Start the app using serve
+CMD ["serve", "-s", "build", "-l", "3000"]
