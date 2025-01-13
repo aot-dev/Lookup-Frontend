@@ -15,7 +15,7 @@ const App = () => {
     setResult('');
 
     try {
-      const response = await axios.post(`http://13.61.186.57:3000/api/lookup`,{
+      const response = await axios.post(`http://13.61.186.57:8080/api/lookup`,{
         query
       });
       setResult(response.data);
