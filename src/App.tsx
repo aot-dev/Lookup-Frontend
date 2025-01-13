@@ -4,7 +4,7 @@ import './App.css';
 import LookupForm from './components/LookupForm';
 import LookupResult from './components/LookupResult';
 
-const apiUrl = import.meta.env.API_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 const App = () => {
   const [result, setResult] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
